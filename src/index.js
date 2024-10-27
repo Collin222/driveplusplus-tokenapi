@@ -1,6 +1,9 @@
 import { Hono } from 'hono';
+import { cors } from 'hono/cors';
 
 const app = new Hono();
+
+app.use('*', cors({ origin: '*' }));
 
 app.post('/api/auth/token', async (c) => {
 	const clientId = c.env.CLIENT_ID;
